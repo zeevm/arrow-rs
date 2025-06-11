@@ -240,7 +240,7 @@ where
 /// the range of [1, 4]. If the given array isn't temporal primitive or dictionary array,
 /// an `Err` will be returned.
 pub fn quarter_dyn(array: &dyn Array) -> Result<ArrayRef, ArrowError> {
-    time_fraction_dyn(array, "quarter", |t| t.quarter() as i32)
+    time_fraction_dyn(array, "quarter", |t| ChronoDateExt::quarter(&t) as i32)
 }
 
 /// Extracts the quarter of a given temporal primitive array as an array of integers within
@@ -250,7 +250,7 @@ where
     T: ArrowTemporalType + ArrowNumericType,
     i64: From<T::Native>,
 {
-    time_fraction_internal(array, "quarter", |t| t.quarter() as i32)
+    time_fraction_internal(array, "quarter", |t| ChronoDateExt::quarter(&t) as i32)
 }
 
 /// Extracts the month of a given temporal array as an array of integers.
