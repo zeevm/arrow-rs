@@ -16,6 +16,7 @@
 // under the License.
 
 //! Low-level buffer abstractions for [Apache Arrow Rust](https://docs.rs/arrow)
+#![allow(warnings)]
 
 pub mod alloc;
 pub mod buffer;
